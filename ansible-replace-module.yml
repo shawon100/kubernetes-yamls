@@ -1,0 +1,25 @@
+---
+- name: ansible-replace-module
+  hosts: all
+  become: true
+  tasks:
+    - name: Replace a String
+      replace:
+        path: /opt/itadmin/blog.txt
+        regexp: 'xFusionCorp'
+        replace: "Nautilus"
+      when: (ansible_user == "tony")
+
+    - name: Replace a String
+      replace:
+        path: /opt/itadmin/story.txt
+        regexp: 'Nautilus'
+        replace: "KodeKloud"
+      when: (ansible_user == "steve")
+
+    - name: Replace a String
+      replace:
+        path: /opt/itadmin/media.txt
+        regexp: 'KodeKloud'
+        replace: "xFusionCorp Industries"
+      when: (ansible_user == "banner")

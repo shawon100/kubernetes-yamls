@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: lamp-wp
+  name: lamp-wp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lamp-wp
+  template:
+    metadata:
+      labels:
+        app: lamp-wp
+    spec:
+      containers:
+      - image: webdevops/php-apache:alpine-3-php7
+        name: httpd-php-container
+        ports:
+        - containerPort: 80
+        envFrom:
+        - secretRef:
+           name: database
+        volumeMounts:
+        - name: php-ini
+          mountPath: /opt/docker/etc/php/php.ini
+          subPath: php.ini
+      - image: mysql:5.6
+        name: mysql-container
+        envFrom:
+        - secretRef:
+           name: database
+        ports:
+        - containerPort: 3306
+      volumes:
+      - name: php-ini
+        configMap:
+          name: php-config

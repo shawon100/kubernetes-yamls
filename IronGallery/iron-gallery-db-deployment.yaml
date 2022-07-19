@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iron-db-deployment-datacenter
+  namespace: iron-namespace-datacenter
+  labels:
+    db: mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      db: mariadb
+  template:
+    metadata:
+      labels:
+        db: mariadb
+    spec:
+      volumes:
+        - name: db
+          emptyDir: {}
+      containers:
+        - name: iron-db-container-datacenter
+          image: kodekloud/irondb:2.0
+          env:
+            - name: MYSQL_DATABASE
+              value: database_blog
+            - name: MYSQL_ROOT_PASSWORD
+              value: P@55w.rd
+            - name: MYSQL_PASSWORD
+              value: P@55w.rd
+            - name: MYSQL_USER
+              value: kodekloud
+          volumeMounts:
+            - name: db
+              mountPath: /var/lib/mysql
