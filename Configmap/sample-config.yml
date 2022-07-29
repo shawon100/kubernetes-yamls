@@ -3,7 +3,10 @@ kind: ConfigMap
 metadata:
   name: my-configmap
 data:
-  config: 
-    mongodbstring = mongodb://10.5.7.8//string
-    rabbimq = http://10.5.46.222:5672
-    redis = http://10.5.6.7:6379
+  GlobalConfig.json: |
+      {
+        "scriptkey": "DATABASE_PASSWORD",
+        "scriptvalue": "",
+        "scriptdefaultvalue": "",
+        "type": "password"
+      }
