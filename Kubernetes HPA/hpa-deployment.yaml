@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-servers
+  labels:
+    app: web-servers
+spec:
+  selector:
+    matchLabels:
+      app: web-servers
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web-servers
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+          - containerPort: 80
+          resources:
+            limits:
+              cpu: 30m
+              memory: 50Mi
+            requests:
+              cpu: 10m
+              memory: 10Mi
+              
