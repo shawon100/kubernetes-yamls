@@ -1,0 +1,33 @@
+#Install VPA at first
+#git clone https://github.com/kubernetes/autoscaler.git
+#cd autoscaler/vertical-pod-autoscaler
+#./hack/vpa-up.sh
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-master
+  labels:
+    app: redis
+spec:
+  selector:
+    matchLabels:
+      app: redis
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: master
+          image: nginx # or just image: redis
+          resources:
+            # limits:
+            #   cpu: 30m
+            #   memory: 40Mi
+            requests:
+              cpu: 5m
+              memory: 5Mi
+          ports:
+            - containerPort: 80
