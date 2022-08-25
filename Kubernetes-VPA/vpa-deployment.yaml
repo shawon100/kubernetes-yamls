@@ -6,26 +6,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-master
+  name: nginx
   labels:
-    app: redis
+    app: nginx
 spec:
   selector:
     matchLabels:
-      app: redis
+      app: nginx
   replicas: 1
   template:
     metadata:
       labels:
-        app: redis
+        app: nginx
     spec:
       containers:
-        - name: master
-          image: nginx # or just image: redis
+        - name: nginx
+          image: nginx # or just image: nginx
           resources:
-            # limits:
-            #   cpu: 30m
-            #   memory: 40Mi
+            limits:
+              cpu: 10m
+              memory: 10Mi
             requests:
               cpu: 5m
               memory: 5Mi
