@@ -14,4 +14,6 @@ Kubernetes Important YAMLS <br>
 13. Kubernetes Lamp <br>
 14. Kubernetes Nginx <br>
 15. Kubernetes Tomcat <br>
+16. Kubernetes Nginx Ingress <br>
+17. Kubernetes Operation Shell Scripts <br>
 

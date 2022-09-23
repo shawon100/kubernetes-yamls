@@ -1,0 +1,13 @@
+controller:
+  config:
+    use-forwarded-headers: "true"
+    server-tokens: "False"
+    client-header-buffer-size: 64k
+    proxy-buffer-size: 64k
+    proxy-body-size: 10m
+    #proxy-read-timeout: "600"
+    #proxy-send-timeout: "600"
+  service:
+    loadBalancerIP: 10.5.16.56
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
