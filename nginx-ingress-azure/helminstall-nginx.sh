@@ -12,6 +12,7 @@ helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
     --namespace nginx-ingress \
     --set controller.replicaCount=3 \
     -f internal-ingress-web.yaml \
+    --set controller.service.externalTrafficPolicy=Local \
     --set controller.nodeSelector."kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux
 
