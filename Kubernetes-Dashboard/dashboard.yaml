@@ -163,6 +163,15 @@ metadata:
   name: dashboard-reader
   namespace: kubernetes-dashboard
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: dashboard-reader-token
+  namespace: kubernetes-dashboard
+  annotations:
+    kubernetes.io/service-account.name: dashboard-reader
+type: kubernetes.io/service-account-token
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
