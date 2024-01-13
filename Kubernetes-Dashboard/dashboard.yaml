@@ -377,6 +377,6 @@ spec:
             service:
               name: kubernetes-dashboard
               port: 
-                number: 9090
+                number: 80
           path: /
           pathType: ImplementationSpecific
